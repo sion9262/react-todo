@@ -1,17 +1,21 @@
 import { useForm } from "react-hook-form";
+import { useSetRecoilState } from "recoil";
+import { toDoState } from "../atoms/atoms";
 
 interface IForm {
   toDo: string
 }
+
 const ToDoForm = () => {
   const {register, handleSubmit, setValue} = useForm<IForm>();
-  const onSubit = (data: IForm) => {
-    console.log(data)
-    setValue("toDo", "")
+  const setToDos = useSetRecoilState(toDoState);
+  const handleValid = ({toDo}: IForm) => {
+    setToDos((oldToDos) => [{id: Date.now(), text: toDo, category: "TO_DO"}, ...oldToDos]);
+    setValue("toDo" , "");
   }
   return (
 		<div>
-      <form onSubmit={handleSubmit(onSubit)}>
+      <form onSubmit={handleSubmit(handleValid )}>
         <input {...register("toDo", {required: "Please write a To Do"})} placeholder="할 일을 적어주세요!"/>
         <button type="submit">추가하기</button>
       </form>

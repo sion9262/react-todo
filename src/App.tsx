@@ -1,11 +1,11 @@
-import ToDoForm from './components/ToDoForm';
+import ToDoList from './components/ToDoList';
 import { GlobalStyle } from './styles/global-style';
 
 function App() {
   return (
     <>
       <GlobalStyle/>
-      <ToDoForm/>
+      <ToDoList/>
     </>
   );
 }
