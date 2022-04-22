@@ -1,8 +1,13 @@
 import { IToDo } from "../atoms/atoms";
 
-const ToDo = ({id, text}: IToDo) => {
+const ToDo = ({text}: IToDo) => {
 	return (
-    <li key={id}>{text}</li>
+    <li>
+      <span>{text}</span>
+      <button>To Do</button>
+      <button>Doing</button>
+      <button>Done</button>
+    </li>
 	)
 }
 export default ToDo;
